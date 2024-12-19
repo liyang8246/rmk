@@ -44,8 +44,10 @@ jobs:
         with:
           python-version: '3.11'
       - uses: actions-rust-lang/setup-rust-toolchain@v1
+      - name: Install cargo-binstall
+        run: curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
       - name: Install cargo-make
-        run: cargo install cargo-make
+        run: cargo binstall cargo-make -y
       - uses: actions/checkout@v3
       - name: Build rmk
         working-directory: ./rmk
@@ -58,8 +60,10 @@ jobs:
         with:
           python-version: '3.11'
       - uses: actions-rust-lang/setup-rust-toolchain@v1
+      - name: Install cargo-binstall
+        run: curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
       - name: Install cargo-make
-        run: cargo install cargo-make
+        run: cargo binstall cargo-make -y
       - uses: actions/checkout@v3
       - name: Install target
         run: rustup target add thumbv6m-none-eabi
@@ -74,8 +78,10 @@ jobs:
         with:
           python-version: '3.11'
       - uses: actions-rust-lang/setup-rust-toolchain@v1
+      - name: Install cargo-binstall
+        run: curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
       - name: Install cargo-make
-        run: cargo install cargo-make
+        run: cargo binstall cargo-make -y
       - uses: actions/checkout@v3
       - name: Install target
         run: rustup target add thumbv6m-none-eabi
@@ -90,8 +96,10 @@ jobs:
         with:
           python-version: '3.11'
       - uses: actions-rust-lang/setup-rust-toolchain@v1
+      - name: Install cargo-binstall
+        run: curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
       - name: Install cargo-make
-        run: cargo install cargo-make
+        run: cargo binstall cargo-make -y
       - uses: actions/checkout@v3
       - name: Install target
         run: rustup target add thumbv7em-none-eabihf
@@ -106,8 +114,10 @@ jobs:
         with:
           python-version: '3.11'
       - uses: actions-rust-lang/setup-rust-toolchain@v1
+      - name: Install cargo-binstall
+        run: curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
       - name: Install cargo-make
-        run: cargo install cargo-make
+        run: cargo binstall cargo-make -y
       - uses: actions/checkout@v3
       - name: Install target
         run: rustup target add thumbv7em-none-eabihf
@@ -122,8 +132,10 @@ jobs:
         with:
           python-version: '3.11'
       - uses: actions-rust-lang/setup-rust-toolchain@v1
+      - name: Install cargo-binstall
+        run: curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
       - name: Install cargo-make
-        run: cargo install cargo-make
+        run: cargo binstall cargo-make -y
       - uses: actions/checkout@v3
       - name: Install target
         run: rustup target add thumbv7m-none-eabi      
@@ -138,8 +150,10 @@ jobs:
         with:
           python-version: '3.11'
       - uses: actions-rust-lang/setup-rust-toolchain@v1
+      - name: Install cargo-binstall
+        run: curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
       - name: Install cargo-make
-        run: cargo install cargo-make
+        run: cargo binstall cargo-make -y
       - uses: actions/checkout@v3
       - name: Install target
         run: rustup target add thumbv7m-none-eabi     
@@ -154,8 +168,10 @@ jobs:
         with:
           python-version: '3.11'
       - uses: actions-rust-lang/setup-rust-toolchain@v1
+      - name: Install cargo-binstall
+        run: curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
       - name: Install cargo-make
-        run: cargo install cargo-make
+        run: cargo binstall cargo-make -y
       - uses: actions/checkout@v3
       - name: Install target
         run: rustup target add thumbv7em-none-eabihf
@@ -170,8 +186,10 @@ jobs:
         with:
           python-version: '3.11'
       - uses: actions-rust-lang/setup-rust-toolchain@v1
+      - name: Install cargo-binstall
+        run: curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
       - name: Install cargo-make
-        run: cargo install cargo-make
+        run: cargo binstall cargo-make -y
       - uses: actions/checkout@v3
       - name: Install target
         run: rustup target add thumbv7em-none-eabihf
@@ -186,8 +204,10 @@ jobs:
         with:
           python-version: '3.11'
       - uses: actions-rust-lang/setup-rust-toolchain@v1
+      - name: Install cargo-binstall
+        run: curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
       - name: Install cargo-make
-        run: cargo install cargo-make
+        run: cargo binstall cargo-make -y
       - uses: actions/checkout@v3
       - name: Install target
         run: rustup target add thumbv7em-none-eabihf
@@ -202,8 +222,10 @@ jobs:
         with:
           python-version: '3.11'
       - uses: actions-rust-lang/setup-rust-toolchain@v1
+      - name: Install cargo-binstall
+        run: curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
       - name: Install cargo-make
-        run: cargo install cargo-make
+        run: cargo binstall cargo-make -y
       - uses: actions/checkout@v3
       - name: Install target
         run: rustup target add thumbv7em-none-eabihf
@@ -218,8 +240,10 @@ jobs:
         with:
           python-version: '3.11'
       - uses: actions-rust-lang/setup-rust-toolchain@v1
+      - name: Install cargo-binstall
+        run: curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
       - name: Install cargo-make
-        run: cargo install cargo-make
+        run: cargo binstall cargo-make -y
       - uses: actions/checkout@v3
       - name: Install target
         run: rustup target add thumbv7em-none-eabihf
@@ -234,8 +258,10 @@ jobs:
         with:
           python-version: '3.11'
       - uses: actions-rust-lang/setup-rust-toolchain@v1
+      - name: Install cargo-binstall
+        run: curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
       - name: Install cargo-make
-        run: cargo install cargo-make
+        run: cargo binstall cargo-make -y
       - uses: actions/checkout@v3
       - name: Install target
         run: rustup target add thumbv6m-none-eabi
@@ -250,8 +276,10 @@ jobs:
         with:
           python-version: '3.11'
       - uses: actions-rust-lang/setup-rust-toolchain@v1
+      - name: Install cargo-binstall
+        run: curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
       - name: Install cargo-make
-        run: cargo install cargo-make
+        run: cargo binstall cargo-make -y
       - uses: actions/checkout@v3
       - name: Install target
         run: rustup target add thumbv6m-none-eabi
@@ -266,8 +294,10 @@ jobs:
         with:
           python-version: '3.11'
       - uses: actions-rust-lang/setup-rust-toolchain@v1
+      - name: Install cargo-binstall
+        run: curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
       - name: Install cargo-make
-        run: cargo install cargo-make
+        run: cargo binstall cargo-make -y
       - uses: actions/checkout@v3
       - name: Install target
         run: rustup target add thumbv7em-none-eabihf
@@ -282,8 +312,10 @@ jobs:
         with:
           python-version: '3.11'
       - uses: actions-rust-lang/setup-rust-toolchain@v1
+      - name: Install cargo-binstall
+        run: curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
       - name: Install cargo-make
-        run: cargo install cargo-make
+        run: cargo binstall cargo-make -y
       - uses: actions/checkout@v3
       - name: Install target
         run: rustup target add thumbv7em-none-eabihf
