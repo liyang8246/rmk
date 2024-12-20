@@ -26,7 +26,9 @@ jobs:
   determine-runner:
     runs-on: ubuntu-latest
     permissions:
+      contents: read
       actions: read
+      pull-requests: read
     outputs:
       runner: ${{ steps.set-runner.outputs.use-runner }}
     steps:
