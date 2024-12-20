@@ -28,22 +28,13 @@ jobs:
     outputs:
       runner: ${{ steps.set-runner.outputs.use-runner }}
     steps:
-      - name: print env and vars
-        run: |
-          echo "GITHUB_REF: ${{ github.ref }}"
-          echo "GITHUB_EVENT_NAME: ${{ github.event_name }}"
-          echo "GITHUB_EVENT_PATH: ${{ github.event_path }}"
-          echo "GITHUB_WORKFLOW: ${{ github.workflow }}"
-          echo "GITHUB_ACTION: ${{ github.action }}"
-          echo "GITHUB_ENV: ${{ env }}"
-          echo "GITHUB_VARS: ${{ vars }}"
       - name: Determine which runner to use
         id: set-runner
         uses: jimmygchen/runner-fallback-action@v1
         with:
           primary-runner: "self-hosted"
           fallback-runner: "ubuntu-latest"
-          github-token: ${{ env.RMK_GITHUB_TOKEN }}
+          github-token: ${{ vars.RMK_GITHUB_TOKEN }}
 
   build_rmk:
     needs: determine-runner
