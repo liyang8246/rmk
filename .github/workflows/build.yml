@@ -26,22 +26,11 @@ jobs:
   determine-runner:
     runs-on: ubuntu-latest
     permissions:
-      actions: write
-      attestations: write
-      checks: write
-      contents: write
-      deployments: write
-      id-token: write
-      issues: write
-      discussions: write
-      packages: write
-      pages: write
-      pull-requests: write
-      repository-projects: write
-      security-events: write
-      statuses: write
+      actions: read
     outputs:
       runner: ${{ steps.set-runner.outputs.use-runner }}
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: Determine which runner to use
         id: set-runner
@@ -49,7 +38,7 @@ jobs:
         with:
           primary-runner: "self-hosted"
           fallback-runner: "ubuntu-latest"
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ env.GH_TOKEN }}
 
   build_rmk:
     needs: determine-runner
