@@ -38,6 +38,10 @@ jobs:
     needs: determine-runner
     runs-on: ${{ fromJson(needs.determine-runner.outputs.runner) }}
     steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions-rust-lang/setup-rust-toolchain@v1
       - uses: cargo-bins/cargo-binstall@main
       - uses: actions/checkout@v3
       - name: Install ldproxy and espup
@@ -53,6 +57,10 @@ jobs:
     needs: determine-runner
     runs-on: ${{ fromJson(needs.determine-runner.outputs.runner) }}
     steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions-rust-lang/setup-rust-toolchain@v1
       - uses: cargo-bins/cargo-binstall@main
       - uses: actions/checkout@v3
       - name: Install ldproxy and espup
@@ -68,6 +76,10 @@ jobs:
     needs: determine-runner
     runs-on: ${{ fromJson(needs.determine-runner.outputs.runner) }}
     steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions-rust-lang/setup-rust-toolchain@v1
       - uses: cargo-bins/cargo-binstall@main
       - uses: actions/checkout@v3
       - name: Install ldproxy and espup
@@ -83,6 +95,10 @@ jobs:
     needs: determine-runner
     runs-on: ${{ fromJson(needs.determine-runner.outputs.runner) }}
     steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions-rust-lang/setup-rust-toolchain@v1
       - uses: cargo-bins/cargo-binstall@main
       - uses: actions/checkout@v3
       - name: Install ldproxy and espup
@@ -99,6 +115,10 @@ jobs:
     needs: determine-runner
     runs-on: ${{ fromJson(needs.determine-runner.outputs.runner) }}
     steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions-rust-lang/setup-rust-toolchain@v1
       - uses: cargo-bins/cargo-binstall@main
       - uses: actions/checkout@v3
       - uses: actions/cache@v3
@@ -125,6 +145,10 @@ jobs:
     needs: determine-runner
     runs-on: ${{ fromJson(needs.determine-runner.outputs.runner) }}
     steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions-rust-lang/setup-rust-toolchain@v1
       - uses: cargo-bins/cargo-binstall@main
       - uses: actions/checkout@v3
       - uses: actions/cache@v3
