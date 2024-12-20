@@ -25,6 +25,8 @@ env:
 jobs:
   determine-runner:
     runs-on: ubuntu-latest
+    permissions:
+      actions: read
     outputs:
       runner: ${{ steps.set-runner.outputs.use-runner }}
     steps:
