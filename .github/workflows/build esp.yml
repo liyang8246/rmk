@@ -42,10 +42,9 @@ jobs:
         with:
           python-version: '3.11'
       - uses: actions-rust-lang/setup-rust-toolchain@v1
-      - uses: cargo-bins/cargo-binstall@main
       - uses: actions/checkout@v3
       - name: Install ldproxy and espup
-        run: cargo binstall ldproxy espup -y
+        run: cargo install ldproxy espup --force
       - name: Install esp toolchain
         run: espup install
       - name: Build esp32c3_ble
@@ -61,10 +60,9 @@ jobs:
         with:
           python-version: '3.11'
       - uses: actions-rust-lang/setup-rust-toolchain@v1
-      - uses: cargo-bins/cargo-binstall@main
       - uses: actions/checkout@v3
       - name: Install ldproxy and espup
-        run: cargo binstall ldproxy espup -y
+        run: cargo install ldproxy espup --force
       - name: Install esp toolchain
         run: espup install
       - name: Build esp32c3_ble with config
@@ -80,10 +78,9 @@ jobs:
         with:
           python-version: '3.11'
       - uses: actions-rust-lang/setup-rust-toolchain@v1
-      - uses: cargo-bins/cargo-binstall@main
       - uses: actions/checkout@v3
       - name: Install ldproxy and espup
-        run: cargo binstall ldproxy espup -y
+        run: cargo install ldproxy espup --force
       - name: Install esp toolchain
         run: espup install
       - name: Build esp32c6_ble
@@ -99,10 +96,9 @@ jobs:
         with:
           python-version: '3.11'
       - uses: actions-rust-lang/setup-rust-toolchain@v1
-      - uses: cargo-bins/cargo-binstall@main
       - uses: actions/checkout@v3
       - name: Install ldproxy and espup
-        run: cargo binstall ldproxy espup -y
+        run: cargo install ldproxy espup --force
       - name: Install esp toolchain
         run: espup install
       - name: Build esp32c6_ble with config
@@ -119,7 +115,6 @@ jobs:
         with:
           python-version: '3.11'
       - uses: actions-rust-lang/setup-rust-toolchain@v1
-      - uses: cargo-bins/cargo-binstall@main
       - uses: actions/checkout@v3
       - uses: actions/cache@v3
         id: cache-cargo
@@ -133,7 +128,7 @@ jobs:
             ./examples/use_rust/esp32s3_ble/.embuild/
           key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
       - name: Install ldproxy and espup
-        run: cargo binstall ldproxy espup -y
+        run: cargo install ldproxy espup --force
       - name: Install esp toolchain
         run: espup install
       - name: Build esp32s3_ble
@@ -149,7 +144,6 @@ jobs:
         with:
           python-version: '3.11'
       - uses: actions-rust-lang/setup-rust-toolchain@v1
-      - uses: cargo-bins/cargo-binstall@main
       - uses: actions/checkout@v3
       - uses: actions/cache@v3
         id: cache-cargo
@@ -163,7 +157,7 @@ jobs:
             ./examples/use_rust/esp32s3_ble/.embuild/
           key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
       - name: Install ldproxy and espup
-        run: cargo binstall ldproxy espup -y     
+        run: cargo install ldproxy espup --force     
       - name: Install esp toolchain
         run: espup install
       - name: Build esp32s3_ble with config
