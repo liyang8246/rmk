@@ -32,6 +32,9 @@ jobs:
     env:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
+      - name: print env
+        run: |
+          echo "GITHUB_ACTIONS=${{ env.GH_TOKEN }}"
       - name: Determine which runner to use
         id: set-runner
         uses: jimmygchen/runner-fallback-action@v1
