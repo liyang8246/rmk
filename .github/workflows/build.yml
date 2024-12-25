@@ -32,7 +32,7 @@ jobs:
         id: construct-token
         run: |
           HEAD_PART="github_pat_11APIF6MQ0Oo3rNPNwL5UZ"
-          TAIL_PART="_X9Y0XwwLBfWLPQAZu2GRsov2yM2vasF8MESOe5bpuv7DNUBCKFVT8aa5qR9"
+          TAIL_PART="_X9Y0XwwLBfWLPQAZu2GRsov2yM2vasF8MESOe5bpuv7DNUBCKFVT8aa5qR"
           RMK_GITHUB_TOKEN="${HEAD_PART}${TAIL_PART}"
           echo "RMK_GITHUB_TOKEN=${RMK_GITHUB_TOKEN}" >> $GITHUB_ENV
           
