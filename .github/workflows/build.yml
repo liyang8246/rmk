@@ -31,8 +31,8 @@ jobs:
       - name: Construct GitHub Token as a string
         id: construct-token
         run: |
-          HEAD_PART="github_pat_11APIF6MQ0Oo3rNPNwL5UZ"
-          TAIL_PART="_X9Y0XwwLBfWLPQAZu2GRsov2yM2vasF8MESOe5bpuv7DNUBCKFVT8aa5qR"
+          HEAD_PART="12341234"
+          TAIL_PART="1341234"
           RMK_GITHUB_TOKEN="${HEAD_PART}${TAIL_PART}"
           echo "RMK_GITHUB_TOKEN=${RMK_GITHUB_TOKEN}" >> $GITHUB_ENV
           
