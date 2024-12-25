@@ -34,7 +34,7 @@ jobs:
         with:
           primary-runner: "self-hosted"
           fallback-runner: "ubuntu-latest"
-          github-token: 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
+          github-token: "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"
 
   build_rmk:
     needs: determine-runner
