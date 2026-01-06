@@ -115,6 +115,9 @@ default = ["defmt", "storage", "vial", "vial_lock"]
 ## Enable host configurator support
 host = []
 
+## Enable RPC support
+rpc = []
+
 ## Enable vial support
 vial = ["host"]
 

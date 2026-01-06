@@ -124,3 +124,19 @@ pub struct CompositeReport {
     pub(crate) media_usage_id: u16,
     pub(crate) system_usage_id: u8,
 }
+
+#[gen_hid_descriptor(
+    (collection = APPLICATION, usage_page = 0xFF70, usage = 0x71) = {
+        (usage = 0x72, logical_min = 0x0) = {
+            #[item_settings data,variable,absolute] input_data=input;
+        };
+        (usage = 0x73, logical_min = 0x0) = {
+            #[item_settings data,variable,absolute] output_data=output;
+        };
+    }
+)]
+#[derive(Default)]
+pub struct RpcReport {
+    pub(crate) input_data: [u8; 32],
+    pub(crate) output_data: [u8; 32],
+}

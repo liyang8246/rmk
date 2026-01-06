@@ -49,6 +49,11 @@ use state::CONNECTION_STATE;
 pub use trouble_host::prelude::*;
 #[cfg(feature = "host")]
 use {crate::descriptor::ViaReport, crate::hid::HidWriterTrait, crate::host::run_host_communicate_task};
+#[cfg(feature = "rpc")]
+use {
+    crate::descriptor::RpcReport,
+    crate::host::{run_rpc_communicate_task, UsbRpcReaderWriter},
+};
 #[cfg(all(not(feature = "_no_usb"), not(feature = "_ble")))]
 use {
     crate::light::UsbLedReader,
@@ -270,6 +275,8 @@ pub async fn run_rmk<
         let mut other_writer = add_usb_writer!(&mut usb_builder, CompositeReport, 9);
         #[cfg(feature = "host")]
         let mut host_reader_writer = add_usb_reader_writer!(&mut usb_builder, ViaReport, 32, 32);
+        #[cfg(feature = "rpc")]
+        let mut rpc_reader_writer = add_usb_reader_writer!(&mut usb_builder, RpcReport, 32, 32);
 
         let (mut keyboard_reader, mut keyboard_writer) = keyboard_reader_writer.split();
 
@@ -311,6 +318,8 @@ pub async fn run_rmk<
                     keymap,
                     #[cfg(feature = "host")]
                     crate::host::UsbHostReaderWriter::new(&mut host_reader_writer),
+                    #[cfg(feature = "rpc")]
+                    UsbRpcReaderWriter::new(&mut rpc_reader_writer),
                     #[cfg(feature = "vial")]
                     rmk_config.vial_config,
                     usb_task,
@@ -336,16 +345,18 @@ pub(crate) async fn run_keyboard<
     W: RunnableHidWriter,
     #[cfg(feature = "storage")] F: AsyncNorFlash,
     #[cfg(feature = "host")] Rw: HidReaderTrait<ReportType = ViaReport> + HidWriterTrait<ReportType = ViaReport>,
-    #[cfg(any(feature = "storage", feature = "host"))] const ROW: usize,
-    #[cfg(any(feature = "storage", feature = "host"))] const COL: usize,
-    #[cfg(any(feature = "storage", feature = "host"))] const NUM_LAYER: usize,
-    #[cfg(any(feature = "storage", feature = "host"))] const NUM_ENCODER: usize,
+    #[cfg(feature = "rpc")] RpcRw: HidReaderTrait<ReportType = RpcReport> + HidWriterTrait<ReportType = RpcReport>,
+    #[cfg(any(feature = "storage", feature = "host", feature = "rpc"))] const ROW: usize,
+    #[cfg(any(feature = "storage", feature = "host", feature = "rpc"))] const COL: usize,
+    #[cfg(any(feature = "storage", feature = "host", feature = "rpc"))] const NUM_LAYER: usize,
+    #[cfg(any(feature = "storage", feature = "host", feature = "rpc"))] const NUM_ENCODER: usize,
 >(
     // #[cfg(feature = "storage")] storage_task: impl Future<Output = ()>,
     #[cfg(feature = "storage")] storage: &mut Storage<F, ROW, COL, NUM_LAYER, NUM_ENCODER>,
     // #[cfg(feature = "host")] host_task: impl Future<Output = ()>,
     #[cfg(feature = "host")] keymap: &'a RefCell<KeyMap<'a, ROW, COL, NUM_LAYER, NUM_ENCODER>>,
     #[cfg(feature = "host")] reader_writer: Rw,
+    #[cfg(feature = "rpc")] rpc_reader_writer: RpcRw,
     #[cfg(feature = "vial")] vial_config: VialConfig<'static>,
     communication_fut: impl Future<Output = ()>,
     mut led_reader: R,
@@ -383,6 +394,8 @@ pub(crate) async fn run_keyboard<
         #[cfg(feature = "vial")]
         vial_config,
     );
+    #[cfg(feature = "rpc")]
+    let rpc_fut = run_rpc_communicate_task(keymap, rpc_reader_writer);
     #[cfg(feature = "storage")]
     let storage_fut = storage.run();
 
@@ -393,6 +406,8 @@ pub(crate) async fn run_keyboard<
     let storage_task = core::pin::pin!(storage_fut.fuse());
     #[cfg(feature = "host")]
     let host_task = core::pin::pin!(host_fut.fuse());
+    #[cfg(feature = "rpc")]
+    let rpc_task = core::pin::pin!(rpc_fut.fuse());
     let mut communication_task = core::pin::pin!(communication_fut.fuse());
     let mut led_task = core::pin::pin!(led_fut.fuse());
     let mut writer_task = core::pin::pin!(writer_fut.fuse());
@@ -403,6 +418,7 @@ pub(crate) async fn run_keyboard<
         _ = with_feature!("controller", wpm_controller.polling_loop()) => error!("WPM Controller task ended"),
         _ = led_task => error!("Led task has ended"),
         _ = with_feature!("host", host_task) => error!("Host task ended"),
+        _ = with_feature!("rpc", rpc_task) => error!("Rpc task has ended"),
         _ = writer_task => error!("Writer task has ended"),
     };
 
